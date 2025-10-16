@@ -5,16 +5,16 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.List;
 
 public class StripePaymentService implements PaymentService {
-    @Value("${stripe.apiUrl}")
+    @Value("${payment.method.stripe.apiUrl}")
     private String apiUrl;
 
-    @Value("${stripe.enabled}")
+    @Value("${payment.method.stripe.enabled}")
     private boolean enabled;
 
-    @Value("${stripe.timeout:3000}")
+    @Value("${payment.method.stripe.timeout:3000}")
     private int timeout;
 
-    @Value("${stripe.supported-currencies}")
+    @Value("${payment.method.stripe.supported-currencies}")
     private List<String> supportedCurrencies;
 
     @Override
