@@ -6,22 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "tags")
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false, name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-
-    @Column(nullable = false, name = "email")
-    private String email;
-
-    @Column(nullable = false, name = "password")
-    private String password;
 }
