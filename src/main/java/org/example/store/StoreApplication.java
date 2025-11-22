@@ -1,6 +1,7 @@
 package org.example.store;
 
 import org.example.store.entities.Address;
+import org.example.store.entities.Tag;
 import org.example.store.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,16 +19,13 @@ public class StoreApplication {
                 .email("nicole@gmail.com")
                 .build();
 
-        var address = Address.builder()
-                .street("Kigali")
-                .city("Nyarugenge")
-                .state("Isibo")
-                .zip("Isibo2")
-                .build();
-
-        user.addAddress(address);
+        user.addTag("tag1");
         System.out.println(user);
-        user.removeAddress(address);
+
+        user.addTag("tag2");
+        System.out.println(user);
+
+        user.removeTag("tag1");
         System.out.println(user);
     }
 
