@@ -13,11 +13,6 @@ payment:
   method:
     stripe:
 
-
-
-
-
-
     paypal:
       name: paypal
       apiUrl: https://api.paypal.com

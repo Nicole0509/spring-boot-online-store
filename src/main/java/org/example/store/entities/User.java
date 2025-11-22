@@ -1,13 +1,17 @@
 package org.example.store.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -24,4 +28,18 @@ public class User {
 
     @Column(nullable = false, name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    private List<Address> addresses = new ArrayList<>();
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+        address.setUser(null);
+    }
 }

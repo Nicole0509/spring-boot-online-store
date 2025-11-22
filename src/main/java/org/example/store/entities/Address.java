@@ -1,13 +1,14 @@
 package org.example.store.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Builder
 @Entity
 @Table(name = "addresses")
 public class Address {
@@ -16,15 +17,20 @@ public class Address {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "street", nullable = false)
+    @Column(name = "street")
     private String street;
 
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "state", nullable = false)
+    @Column(name = "state")
     private String state;
 
-    @Column(name = "zip", nullable = false)
+    @Column(name = "zip")
     private String zip;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user;
 }
