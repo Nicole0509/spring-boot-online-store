@@ -47,6 +47,9 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Profile profile;
 
+    @ManyToMany(mappedBy = "users")
+    private Set<Product> wishlist = new HashSet<>();
+
     public void addAddress(Address address) {
         addresses.add(address);
         address.setUser(this);

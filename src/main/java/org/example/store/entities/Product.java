@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,4 +31,11 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToMany
+    @JoinTable(
+            name = "wishlist",
+            joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "products_id")
+    )
+    private Set<User> users = new HashSet<>();
 }
