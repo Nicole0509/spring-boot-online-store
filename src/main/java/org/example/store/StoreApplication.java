@@ -1,6 +1,7 @@
 package org.example.store;
 
 import org.example.store.entities.Address;
+import org.example.store.entities.Profile;
 import org.example.store.entities.Tag;
 import org.example.store.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -19,13 +20,12 @@ public class StoreApplication {
                 .email("nicole@gmail.com")
                 .build();
 
-        user.addTag("tag1");
-        System.out.println(user);
+        var profile = Profile.builder()
+                        .bio("My bio")
+                        .build();
 
-        user.addTag("tag2");
-        System.out.println(user);
-
-        user.removeTag("tag1");
+        user.setProfile(profile);
+        profile.setUser(user);
         System.out.println(user);
     }
 

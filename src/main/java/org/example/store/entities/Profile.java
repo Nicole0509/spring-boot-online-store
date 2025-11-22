@@ -1,15 +1,15 @@
 package org.example.store.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
 @Entity
 @Table(name = "profiles")
 public class Profile {
@@ -29,4 +29,10 @@ public class Profile {
 
     @Column(name = "loyal_points")
     private int loyaltyPoints;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId
+    @ToString.Exclude
+    private User user;
 }
